@@ -2,7 +2,8 @@
 
 ## Phase 1: Authentication & Access Control
 
-* Configure Laravel Breeze/Inertia auth
+* Configure Laravel auth
+* Configure Shadcn Admin
 * Set up role-based middleware (admin, reception, member)
 * Create login/logout for all users
 * Enable registration for members only

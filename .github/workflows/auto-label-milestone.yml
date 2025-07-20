@@ -1,0 +1,77 @@
+name: Auto Assign Label and Milestone
+
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  auto-assign:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Auto-label and milestone
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = context.payload.issue;
+            const title = issue.title.toLowerCase();
+
+            const labelsToAdd = [];
+            let milestoneName = null;
+
+            if (title.includes("auth")) {
+              labelsToAdd.push("auth");
+              milestoneName = "Phase 1: Authentication & Access Control";
+            } else if (title.includes("membership") || title.includes("people") || title.includes("users")) {
+              labelsToAdd.push("membership");
+              milestoneName = "Phase 2: Core Entities & Membership Lifecycle";
+            } else if (title.includes("payment") || title.includes("invoice")) {
+              labelsToAdd.push("billing");
+              milestoneName = "Phase 3: Billing System";
+            } else if (title.includes("class") || title.includes("booking")) {
+              labelsToAdd.push("class-schedule");
+              milestoneName = "Phase 4: Class & Booking System";
+            } else if (title.includes("attendance")) {
+              labelsToAdd.push("attendance");
+              milestoneName = "Phase 5: Attendance Tracking";
+            } else if (title.includes("inventory") || title.includes("sale")) {
+              labelsToAdd.push("inventory");
+              milestoneName = "Phase 6: Inventory & Sales";
+            } else if (title.includes("salary") || title.includes("commission") || title.includes("payroll")) {
+              labelsToAdd.push("trainer-staff");
+              milestoneName = "Phase 7: Financial Features & Payroll";
+            } else if (title.includes("equipment")) {
+              labelsToAdd.push("equipment");
+              milestoneName = "Phase 8: Equipment Management";
+            } else if (title.includes("notification")) {
+              labelsToAdd.push("notification");
+              milestoneName = "Phase 9: Notification System";
+            } else if (title.includes("report") || title.includes("audit")) {
+              labelsToAdd.push("reporting");
+              milestoneName = "Phase 10: Reporting & Audit Trail";
+            }
+
+            if (labelsToAdd.length > 0) {
+              await github.rest.issues.addLabels({
+                issue_number: issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                labels: labelsToAdd,
+              });
+            }
+
+            if (milestoneName) {
+              const milestones = await github.rest.issues.listMilestones({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+              });
+
+              const milestone = milestones.data.find(m => m.title === milestoneName);
+              if (milestone) {
+                await github.rest.issues.update({
+                  issue_number: issue.number,
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  milestone: milestone.number,
+                });
+              }
+            }
