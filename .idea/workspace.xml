@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d0177af7-9cd2-4b9b-9acb-4d8f7ab895b0" name="Changes" comment="Basic react and inertia setup done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/roadmap.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/roadmap.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -355,7 +354,8 @@
       <workItem from="1752877333432" duration="2212000" />
       <workItem from="1752880750942" duration="1324000" />
       <workItem from="1752932518456" duration="7192000" />
-      <workItem from="1753021431845" duration="2627000" />
+      <workItem from="1753021431845" duration="7818000" />
+      <workItem from="1753920202796" duration="32000" />
     </task>
     <task id="LOCAL-00001" summary="Basic react and inertia setup done">
       <option name="closed" value="true" />
