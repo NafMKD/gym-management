@@ -13,7 +13,6 @@ import {
 export function ThemeSwitch() {
   const { theme, setTheme } = useTheme()
 
-  // Update theme-color meta tag when theme changes
   useEffect(() => {
     const themeColor = theme === 'dark' ? '#020817' : '#fff'
     const metaThemeColor = document.querySelector("meta[name='theme-color']")
