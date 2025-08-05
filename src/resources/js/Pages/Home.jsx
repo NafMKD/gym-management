@@ -1,4 +1,4 @@
-import AdminLayout from "@/Layouts/admin-layout";
+import withAdminLayout from "@/Layouts/with-admin-layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -155,6 +155,6 @@ function Home() {
     );
 }
 
-Home.layout = page => <AdminLayout children={page} />;
+Home.layout = withAdminLayout;
 
 export default Home;

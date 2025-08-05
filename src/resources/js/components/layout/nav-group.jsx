@@ -29,8 +29,7 @@ import {
 export function NavGroup({ title, items }) {
   const { state } = useSidebar()
   const { url: currentUrl } = usePage()
-  console.log('NavGroup currentUrl:', currentUrl)
-
+  
   return (
     <SidebarGroup>
       <SidebarGroupLabel>{title}</SidebarGroupLabel>

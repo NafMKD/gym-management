@@ -1,13 +1,9 @@
-import AdminLayout from "@/Layouts/admin-layout";
+import withAdminLayout from "@/Layouts/with-admin-layout";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { useEffect } from "react";
 
 
 function Tasks() {
-    useEffect(() => {
-        console.log("%cTasks page rendered", "color: green");
-    }, []);
     return (
         <>
             <div className="mb-4 flex items-center justify-between">
@@ -56,6 +52,6 @@ function Tasks() {
     );
 }
 
-Tasks.layout = page => <AdminLayout children={page} />;
+Tasks.layout = withAdminLayout;
 
 export default Tasks;
